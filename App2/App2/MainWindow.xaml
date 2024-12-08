@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Window
+    x:Class="App2.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:App2"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Title="App2"
+    Closed="MainWindow_OnClosed"
+    >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <!-- 타이틀바 추가 지정. 이거 때문에 실험용 버전을 사용함. -->
+        <TitleBar x:Name="TitleBar" Title="독서를 도와주는 비서" Subtitle="비주얼 프로그래밍 과제">
+            <TitleBar.IconSource>
+                <ImageIconSource x:Name="AppIcon"
+                                 ImageSource="ms-appx:///Assets/Square44x44Logo.scale-100.png" />
+            </TitleBar.IconSource>
+            <TitleBar.Header>
+                <TextBlock Text="Reading It!" VerticalAlignment="Center" Margin="36,0" />
+            </TitleBar.Header>
+            <TitleBar.Content>
+                <AutoSuggestBox MinWidth="300" HorizontalAlignment="Stretch"
+                                VerticalAlignment="Center" QueryIcon="Find"
+                                PlaceholderText="책 검색하기 (구현 되지 않음)" />
+            </TitleBar.Content>
+        </TitleBar>
+        <!-- 좌측 메뉴 설정. 태그는 이동할 페이지를 지정. -->
+        <NavigationView Grid.Row="1" x:Name="MenuNavigation" SelectionChanged="MenuNavigation_OnSelectionChanged" BackRequested="MenuNavigation_OnBackRequested">
+            <NavigationView.MenuItems>
+                <NavigationViewItem Icon="Home" Content="홈" Tag="MainPage" />
+                <NavigationViewItem Icon="List" Content="책 목록" Tag="AddBookPage" />
+                <NavigationViewItem Icon="Read" Content="읽기 시작하기" Tag="BookInfoPage" />
+                <NavigationViewItem Icon="OtherUser" Content="내 정보" Tag="SamplePage4" />
+            </NavigationView.MenuItems>
+            <Frame Margin="36,48,36,48" x:Name="ContentFrame">
+                <Button VerticalAlignment="Center"  HorizontalAlignment="Center" x:Name="TestButton" Click="TestButton_OnClick">Hi!</Button>
+            </Frame>
+        </NavigationView>
+    </Grid>
+</Window>

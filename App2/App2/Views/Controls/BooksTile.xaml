@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<UserControl
+    x:Class="App2.Views.Controls.BooksTile"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:App2.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <Style x:Key="ScrollButtonStyle" TargetType="Button">
+                <Setter Property="Background" Value="{ThemeResource FlipViewNextPreviousButtonBackground}" />
+                <Setter Property="BackgroundSizing" Value="InnerBorderEdge" />
+                <Setter Property="Foreground" Value="{ThemeResource ButtonForeground}" />
+                <Setter Property="BorderBrush" Value="{ThemeResource FlipViewNextPreviousButtonBorderBrush}" />
+                <Setter Property="BorderThickness" Value="{ThemeResource FlipViewButtonBorderThemeThickness}" />
+                <Setter Property="Padding" Value="0" />
+                <Setter Property="HorizontalAlignment" Value="Left" />
+                <Setter Property="VerticalAlignment" Value="Center" />
+                <Setter Property="FontFamily" Value="{ThemeResource ContentControlThemeFontFamily}" />
+                <Setter Property="FontWeight" Value="Normal" />
+                <Setter Property="FontSize" Value="{ThemeResource ControlContentThemeFontSize}" />
+                <Setter Property="UseSystemFocusVisuals" Value="{StaticResource UseSystemFocusVisuals}" />
+                <Setter Property="FocusVisualMargin" Value="-3" />
+                <Setter Property="CornerRadius" Value="{ThemeResource ControlCornerRadius}" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <ContentPresenter
+                                x:Name="ContentPresenter"
+                                Padding="{TemplateBinding Padding}"
+                                HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                AnimatedIcon.State="Normal"
+                                AutomationProperties.AccessibilityView="Raw"
+                                Background="{TemplateBinding Background}"
+                                BackgroundSizing="{TemplateBinding BackgroundSizing}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Content="{TemplateBinding Content}"
+                                ContentTemplate="{TemplateBinding ContentTemplate}"
+                                ContentTransitions="{TemplateBinding ContentTransitions}"
+                                CornerRadius="{TemplateBinding CornerRadius}">
+                                <ContentPresenter.BackgroundTransition>
+                                    <BrushTransition Duration="0:0:0.083" />
+                                </ContentPresenter.BackgroundTransition>
+
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup x:Name="CommonStates">
+                                        <VisualState x:Name="Normal" />
+
+                                        <VisualState x:Name="PointerOver">
+                                            <Storyboard>
+                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
+                                                                               Storyboard.TargetProperty="Background">
+                                                    <DiscreteObjectKeyFrame KeyTime="0"
+                                                                            Value="{ThemeResource FlipViewNextPreviousButtonBackgroundPointerOver}" />
+                                                </ObjectAnimationUsingKeyFrames>
+                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
+                                                                               Storyboard.TargetProperty="BorderBrush">
+                                                    <DiscreteObjectKeyFrame KeyTime="0"
+                                                                            Value="{ThemeResource FlipViewNextPreviousButtonBorderBrushPointerOver}" />
+                                                </ObjectAnimationUsingKeyFrames>
+                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
+                                                                               Storyboard.TargetProperty="Foreground">
+                                                    <DiscreteObjectKeyFrame KeyTime="0"
+                                                                            Value="{ThemeResource FlipViewNextPreviousArrowForegroundPointerOver}" />
+                                                </ObjectAnimationUsingKeyFrames>
+                                            </Storyboard>
+                                            <VisualState.Setters>
+                                                <Setter Target="ContentPresenter.(AnimatedIcon.State)"
+                                                        Value="PointerOver" />
+                                            </VisualState.Setters>
+                                        </VisualState>
+
+                                        <VisualState x:Name="Pressed">
+                                            <Storyboard>
+                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
+                                                                               Storyboard.TargetProperty="Background">
+                                                    <DiscreteObjectKeyFrame KeyTime="0"
+                                                                            Value="{ThemeResource FlipViewNextPreviousButtonBackgroundPressed}" />
+                                                </ObjectAnimationUsingKeyFrames>
+                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
+                                                                               Storyboard.TargetProperty="BorderBrush">
+                                                    <DiscreteObjectKeyFrame KeyTime="0"
+                                                                            Value="{ThemeResource FlipViewNextPreviousButtonBorderBrushPressed}" />
+                                                </ObjectAnimationUsingKeyFrames>
+                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
+                                                                               Storyboard.TargetProperty="Foreground">
+                                                    <DiscreteObjectKeyFrame KeyTime="0"
+                                                                            Value="{ThemeResource FlipViewNextPreviousArrowForegroundPressed}" />
+                                                </ObjectAnimationUsingKeyFrames>
+                                            </Storyboard>
+                                            <VisualState.Setters>
+                                                <Setter Target="ContentPresenter.(AnimatedIcon.State)" Value="Pressed" />
+                                            </VisualState.Setters>
+                                        </VisualState>
+
+                                        <VisualState x:Name="Disabled">
+                                            <Storyboard>
+                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
+                                                                               Storyboard.TargetProperty="Background">
+                                                    <DiscreteObjectKeyFrame KeyTime="0"
+                                                                            Value="{ThemeResource ButtonBackgroundDisabled}" />
+                                                </ObjectAnimationUsingKeyFrames>
+                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
+                                                                               Storyboard.TargetProperty="BorderBrush">
+                                                    <DiscreteObjectKeyFrame KeyTime="0"
+                                                                            Value="{ThemeResource ButtonBorderBrushDisabled}" />
+                                                </ObjectAnimationUsingKeyFrames>
+                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
+                                                                               Storyboard.TargetProperty="Foreground">
+                                                    <DiscreteObjectKeyFrame KeyTime="0"
+                                                                            Value="{ThemeResource ButtonForegroundDisabled}" />
+                                                </ObjectAnimationUsingKeyFrames>
+                                            </Storyboard>
+                                            <VisualState.Setters>
+                                                <!--  DisabledVisual Should be handled by the control, not the animated icon.  -->
+                                                <Setter Target="ContentPresenter.(AnimatedIcon.State)" Value="Normal" />
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                            </ContentPresenter>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Button
+            x:Name="AddNewBook"
+            Margin="0,0,0,24"
+            HorizontalAlignment="Right"
+            Content="새로운 책 추가"
+            Click="AddNewBook_OnClick" />
+        <ScrollViewer
+            Grid.Row="1"
+
+            x:Name="scroller"
+            HorizontalScrollBarVisibility="Hidden"
+            HorizontalScrollMode="Enabled"
+            SizeChanged="Scroller_OnSizeChanged"
+            VerticalScrollMode="Disabled"
+            ViewChanging="Scroller_OnViewChanging">
+            <Grid x:Name="ContentGrid" Margin="36,0,36,0">
+                <StackPanel x:Name="BooksPanel"
+                            Orientation="Horizontal" 
+                            Spacing="12" 
+                            Width="Auto" 
+                            Height="220"
+                            >
+                    <!-- Test Elements. will not used in publish-->
+                    <!-- <local:BooksControl -->
+                    <!--     Title="채식 주의자" -->
+                    <!--     Description="이 모든 것을 고요히 받아들이고 있는 그녀가 어떤 성스러운 것, 사람이라고도, 그렇다고 짐승이라고도 할 수 없는, 식물이며 동물이며 인간, 혹은 그 중간쯤의 낯선 존재처럼 느껴졌다.(128면)" -->
+                    <!--     Link="https://product.kyobobook.co.kr/detail/S000000610650" -->
+                    <!--     Rating="3.5"> -->
+                    <!--     <local:BooksControl.Source> -->
+                    <!--         <Image Source="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788936434595.jpg" /> -->
+                    <!--     </local:BooksControl.Source> -->
+                    <!-- </local:BooksControl> -->
+                    <!-- <local:BooksControl -->
+                    <!--     Title="날개" -->
+                    <!--     Description="날개야 다시 돋아라.       -->
+                    <!--                 날자. 날자. 날자. 한 번만 더 날자꾸나. -->
+                    <!--                 한 번만 더 날아보자꾸나." -->
+                    <!--     Link="https://product.kyobobook.co.kr/detail/S000001547431" -->
+                    <!--     Rating="4.5"> -->
+                    <!--     <local:BooksControl.Source> -->
+                    <!--         <Image Source="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788994353470.jpg" /> -->
+                    <!--     </local:BooksControl.Source> -->
+                    <!-- </local:BooksControl> -->
+                    <!-- <local:BooksControl -->
+                    <!--     Title="돈키호테 1" -->
+                    <!--     Description="굉장히 무섭고 결코 생각조차 해본 적 없는 풍차 모험에서 용감한 돈키호테가 행한 멋진 사건과 좋게 기억할 만한 사건들에 대하여" -->
+                    <!--     Rating="4.5"> -->
+                    <!--     <local:BooksControl.Source> -->
+                    <!--         <Image Source="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788932916804.jpg" /> -->
+                    <!--     </local:BooksControl.Source> -->
+                    <!-- </local:BooksControl> -->
+                    <Grid BorderBrush="{ThemeResource SurfaceStrokeColorFlyoutBrush}"
+                            CornerRadius="8"
+                            HorizontalAlignment="Center"
+                            x:Name="EmptyStackPanelAlertBorder"
+                            Visibility="Collapsed"
+                            BorderThickness="2"
+                            VerticalAlignment="Center"
+                            >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height ="Auto" />
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0"
+                                   Margin="0,50,0,20"
+                                   x:Name="NoBooksAlertText">현재 책이 없습니다.</TextBlock>
+                        <TextBlock Grid.Row="1" 
+                                   x:Name="NoBooksAlertText2"
+                                   TextAlignment="Center"
+                                   >우측 상단에 있는 책 추가를 눌러보세요.</TextBlock>
+                    </Grid>
+
+                </StackPanel>
+            </Grid>
+        </ScrollViewer>
+        <Button
+            Grid.Row="1"
+            x:Name="ScrollBackBtn"
+            Width="16"
+            Height="38"
+            Margin="8,-16,0,0"
+            AutomationProperties.Name="Scroll left"
+            Click="ScrollBackBtn_OnClick"
+            Style="{StaticResource ScrollButtonStyle}"
+            ToolTipService.ToolTip="Scroll left"
+            Visibility="Collapsed">
+            <FontIcon FontSize="{ThemeResource FlipViewButtonFontSize}" Glyph="&#xedd9;" />
+        </Button>
+        <Button
+            Grid.Row="1"
+            x:Name="ScrollForwardBtn"
+            Width="16"
+            Height="38"
+            Margin="0,-16,8,0"
+            HorizontalAlignment="Right"
+            AutomationProperties.Name="Scroll right"
+            Click="ScrollForwardBtn_OnClick"
+            Style="{StaticResource ScrollButtonStyle}"
+            ToolTipService.ToolTip="Scroll right"
+            
+            >
+            
+            <FontIcon FontSize="{ThemeResource FlipViewButtonFontSize}" Glyph="&#xEDDA;" />
+        </Button>
+    </Grid>
+</UserControl>

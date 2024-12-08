@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="App2.Views.AddMemberPopup"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid x:Name="Output" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="1">
+        <StackPanel>
+            <Button Content="Show Popup (using Offset)"/>
+        </StackPanel>
+        <Popup VerticalOffset="10" HorizontalOffset="200" x:Name="StandardPopup">
+            <Border BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" 
+                    Background="{StaticResource ApplicationPageBackgroundThemeBrush}"
+                    BorderThickness="2" Width="200" Height="200">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock Text="Simple Popup" FontSize="24.667" HorizontalAlignment="Center"/>
+                    <Button Content="Close" HorizontalAlignment="Center"/>
+                </StackPanel>
+            </Border>
+        </Popup>
+    </Grid>
+</Page>

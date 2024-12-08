@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ResourceDictionary
+    x:Class="App2.Views.Controls.IconTextTemplate"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:App2.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:logic="using:App2.Logic"
+    mc:Ignorable="d">
+    <!-- 템플릿. MainPage 와 BookInfoPage 에서 사용됩니다.  -->
+
+    <DataTemplate x:Name="test" x:Key="IconRichBlockTemplate" x:DataType="logic:BookFeedbackInstance">
+
+        <RelativePanel x:Name="InternalPanel" AutomationProperties.Name="{x:Bind Title}" Width="280" MinHeight="160"
+                       BorderBrush="{ThemeResource SurfaceStrokeColorFlyoutBrush}"
+                       Background="{ThemeResource AcrylicBackgroundFillColorDefaultBrush}"
+                       BorderThickness="2"
+                       
+                       CornerRadius="{ThemeResource ControlCornerRadius}"
+                       >
+            <Image x:Name="Image"
+                   Width="42"
+                   Margin="10,10,0,0"
+                   RelativePanel.AlignLeftWithPanel="True"
+                   RelativePanel.AlignTopWithPanel="True"
+                   Source="{x:Bind IconPath}"
+                   Stretch="Uniform"/>
+            <TextBlock x:Name="title" Style="{StaticResource BaseTextBlockStyle}" Margin="70,10,0,0"
+                       Text="{x:Bind Title}" />
+            <TextBlock x:Name="StartTime" Text="{x:Bind StartTime}" Visibility="Visible"
+                       Margin="16,50,8,0" RelativePanel.Below="title"
+                       TextWrapping="Wrap" />
+            <TextBlock x:Name="EndTime" Text="{x:Bind EndTime}" Visibility="Visible"
+                       Margin="16,10,8,0" RelativePanel.Below="StartTime" RelativePanel.AlignRightWithPanel="True"
+                       TextWrapping="Wrap" />
+
+
+        </RelativePanel>
+    </DataTemplate>
+</ResourceDictionary>

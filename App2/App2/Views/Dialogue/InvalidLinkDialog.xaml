@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="App2.Views.Dialogue.InvalidLinkDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:App2.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <StackPanel Margin="0,0,0,20" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+        <TextBlock Text="호환 되지 않는 링크입니다!" />
+        <TextBlock Text="교보문고 책 상세 페이지에서 버튼을 눌러주세요!" />
+    </StackPanel>
+</Page>
