@@ -8,7 +8,10 @@ using BooksControl = App2.Views.Controls.BooksControl;
 
 namespace App2.Logic;
 
-
+/// <summary>
+/// 책에 대한 정보가 담긴 클래스.
+/// 시작 시 파일에서 로드하며, MainWindow의 Directory에서 관리함.
+/// </summary>
 public class BookData : ComponentFactory<BooksControl>
 {
     [JsonConstructor]

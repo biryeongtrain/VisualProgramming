@@ -3,6 +3,9 @@ using System.Text.Json.Serialization;
 
 namespace App2.Logic;
 
+/// <summary>
+/// 책에 읽은 후 감상문 정보에 대한 인스턴스. 
+/// </summary>
 public class BookFeedbackInstance
 {
     [JsonConstructor]

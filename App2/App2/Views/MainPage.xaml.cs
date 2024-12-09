@@ -16,7 +16,7 @@ using App2.Views.Dialogue;
 namespace App2.Views
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// 메인 페이지에 대한 클래스
     /// </summary>
     public sealed partial class MainPage : Page
     {
@@ -31,6 +31,7 @@ namespace App2.Views
             this.InitializeComponent();
             Debug.WriteLine("Load");
 
+            // 등록된 책이 없으면 나오는 알림
             if (MainWindow.books.Count == 0)
             {
                 this.BooksHeaderTile.GetEmptyAlertGrid().Visibility = Visibility.Visible;
@@ -45,22 +46,27 @@ namespace App2.Views
                     this.AddPanelElement(control);
                 }
             }
+
+            // 하단에 보여줄 인스턴스 목록을 설정함.
             var instances = MainWindow.BookFeedbackDictionary.Values.SelectMany(list => list).ToList();
             ObservableCollection<BookFeedbackInstance> items2 = new ObservableCollection<BookFeedbackInstance>(instances);
             this.RecordGridView.ItemsSource = items2;
         }
 
 
+        // NO-OP
         private void ItemGridView_OnContainerContentChanging(ListViewBase sender, ContainerContentChangingEventArgs args)
         {
             
         }
 
+        // NO-OP
         private void ItemGridView_OnItemClick(object sender, ItemClickEventArgs e)
         {
-            throw new NotImplementedException();
         }
 
+
+        // 디버깅용으로 만든 버튼에 사용된 이벤트. 원래는 지워야하는데 남겼음.
         private void TestButton_OnClick(object sender, RoutedEventArgs e)
         {
             var control = new Controls.BooksControl
@@ -73,6 +79,7 @@ namespace App2.Views
             this.AddPanelElement(control);
         }
 
+        // 패널 추가
         private void AddPanelElement(Controls.BooksControl control)
         {
             if (this.BooksHeaderTile.GetEmptyAlertGrid().Visibility == Visibility.Visible)
@@ -82,6 +89,11 @@ namespace App2.Views
             this.BooksHeaderTile.getBooksPanel().Children.Add(control);
         }
 
+        /// <summary>
+        /// 읽은 정보로 이동
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void RecordGridView_OnItemClick(object sender, ItemClickEventArgs e)
         {
             MainWindow.WINDOW.Navigate(typeof(AddReadInfoPage), e.ClickedItem);

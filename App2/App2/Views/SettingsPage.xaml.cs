@@ -26,6 +26,7 @@ namespace App2.Views
      */
     public sealed partial class SettingsPage : Page
     {
+        // 저장 루트 폴더 지정
         public string Path
         {
             get => (string)GetValue(PathProperty);
@@ -40,6 +41,7 @@ namespace App2.Views
             this.Path = MainWindow.BookFolder;
         }
 
+        // 테마 선택버튼의 요소가 변경되었을 때 발생하는 이벤트 정의
         private void ThemeMode_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (!_initialized)

@@ -16,10 +16,11 @@ using Path = System.IO.Path;
 
 namespace App2.Views.Dialogue
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
-    ///
+/// <summary>
+/// 책을 읽은 정보를 추가하는 내역. 원래는 페이지와 그에 따른 동작도 바뀌어야 하나,
+/// DataTemplate DataContext 참조 문제로 인해 시간이 부족하여 제작하지 못함. <br></br>
+/// KNOWN ISSUE : 어두운 테마일 때 텍스트 컬러가 제대로 적용되지 않음.
+/// </summary>
     public sealed partial class AddReadInfoPage : Page
     {
         private BookFeedbackInstance Instance { get; set; }
@@ -53,6 +54,8 @@ namespace App2.Views.Dialogue
             {
                 return;
             }
+            // 색이 변하지 않는 이슈가 있는데, CommunityToolkit에 있는 ColorPalette 의 문제로 확인됨. 
+            // 일단 Issue 를 넣어둔 상태인데, 지금당장 해결 할 방법은 없어보임.
             Editor.Document.Selection.CharacterFormat.ForegroundColor = FontColorButton.SelectedColor;
            
         }
@@ -169,6 +172,8 @@ namespace App2.Views.Dialogue
                 this.StartTime.Time = instance.GetStartTimeSpan();
                 this.EndTime.Time = instance.GetEndTimeSpan();
                 this.Instance = instance;
+
+                // LOCK ALL BOXES
                 this.Editor.IsReadOnly = true;
                 this.TitleBox.IsReadOnly = true;
                 this.Rating.IsReadOnly = true;

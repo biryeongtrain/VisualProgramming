@@ -19,7 +19,7 @@ using Windows.Foundation.Collections;
 namespace App2.Views.Dialogue
 {
     /// <summary>
-    /// An empty window that can be used on its own or navigated to within a Frame.
+    /// 중요한 페이지는 아님. 그저 에러 내용을 표시하는 페이지임.
     /// </summary>
     public sealed partial class InvalidLinkDialog : Page
     {
